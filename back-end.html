@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>後台管理</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/minireset.css/0.0.2/minireset.css' integrity='sha512-oCMe0gk4MRWD41q3DdT0Aa5r7a7XyKd8bqbpzaVPsuR+cXzwG/mexuuMdTfQPLLw0vLdYN6umSRYokROXCfZPA==' crossorigin='anonymous'/>
+  <link rel="stylesheet" href="dist/css/all.min.css">
+</head>
+<body class="backend_body">
+  <div class="back_conrainer">
+    <header>
+      <ul class="header_pages">
+        <li><a href="products.html"> 產品頁面 </a></li>
+        <li><a href="back-end.html"> 後台管理 </a></li>
+      </ul>
+    </header>
+    <h2> Back end </h2>
+    <div class="c3_content"></div>
+    <div class="orders_content">
+      <table class="table-bordered">
+        <thead>
+          <tr>
+            <th>訂單編號</th>
+            <th>姓名</th>
+            <th>地址</th>
+            <th>信箱</th>
+            <th>品項</th>
+            <th>日期</th>
+            <th>訂單狀態</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody class="order-details" id="backendTable">
+          
+        </tbody>
+      </table>
+      <div class="del-all-button-content">
+        <a class="del-all-button" id="delAllBTN"> 刪除全部訂單 </a>
+      </div>
+    </div>
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js' integrity='sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==' crossorigin='anonymous'></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="JS/backend.js"></script>
+</body>
+</html>

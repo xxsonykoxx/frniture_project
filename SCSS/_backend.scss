@@ -1,0 +1,73 @@
+.backend_body {
+  background-color: lighten($A, 12%);
+}
+.back_conrainer {
+  padding: 24px;
+  border-radius: 10px;
+  background-color: #fff;
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  h2 {
+    color: darken($D ,8%);
+    margin-bottom: 25px;
+  }
+}
+.table-bordered {
+  th {
+    width: 12%;
+    font-size: 13px;
+    font-weight: 300;
+    color: $A;
+    text-align: center;
+    padding-bottom: 8px;
+  }
+}
+.order-details {
+  td {
+    padding: 5px;
+    font-size: 11px;
+    font-weight: 300;
+    color: $B;
+    text-align: center;
+    padding-bottom: 8px;
+  }
+}
+.order-name, .order-email , .order-date {
+  color: darken($B ,5%) !important;
+}
+.del-order {
+  color: $B;
+    font-size: 11px;
+    padding: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border: 1px solid $B;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    &:hover {
+      border: 1px solid $A;
+      background-color: $A;
+      color: #fff;
+    }
+}
+.del-all-button-content {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 50px;
+}
+.del-all-button {
+  font-size: 12px;
+  font-weight: 300;
+  border: 1px solid $A;
+  padding: 6px;
+  border-radius: 5px;
+  color: $A;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid $B;
+    color: $B;
+  }
+}

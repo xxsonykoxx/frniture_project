@@ -1,0 +1,35 @@
+@import "_products.scss";
+@import "_checkout.scss";
+@import "_backend.scss";
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&family=Noto+Sans+TC:wght@100;300;400&display=swap');
+
+
+*{
+  // border: 1px solid #ddd;
+}
+input:focus, button:focus, select:focus {
+  outline: none;
+}
+body {
+  font-family: 'Noto Sans TC','Comfortaa', cursive;
+  // font-family: 'Noto Sans TC', sans-serif;
+  width: 100%;
+  letter-spacing: 1.8px;
+}
+.header_pages {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  li {
+    margin-left: 18px;
+    font-size: 14px;
+    font-weight: 300;
+  }
+  a {
+    text-decoration: none;
+    color: $A;
+    &:hover {
+      color: $B;
+    }
+  }
+}

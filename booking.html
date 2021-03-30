@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>結帳頁面</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/minireset.css/0.0.2/minireset.css' integrity='sha512-oCMe0gk4MRWD41q3DdT0Aa5r7a7XyKd8bqbpzaVPsuR+cXzwG/mexuuMdTfQPLLw0vLdYN6umSRYokROXCfZPA==' crossorigin='anonymous'/>
+  <link rel="stylesheet" href="dist/css/all.min.css">
+</head>
+<body>
+  <div class="booking_conrainer">
+    <header>
+      <ul class="header_pages">
+        <li><a href="products.html"> 產品頁面 </a></li>
+        <li><a href="back-end.html"> 後台管理 </a></li>
+      </ul>
+    </header>
+    <h2> checkout </h2>
+    <form class="checkout_form" id="validateForm">
+      <div class="name">
+        <label for="name"> 姓名 </label>
+        <input type="text" id="name" name="formName">
+        <span class="message formName"></span>
+      </div>
+      <div class="phone">
+        <label for="phone"> 電話 </label>
+        <input type="number" id="phone" name="formTel">
+        <span class="message formTel"></span>
+      </div>
+      <div class="email">
+        <label for="email"> 信箱 </label>
+        <input type="email" id="email" name="formEmail">
+        <span class="message formEmail"></span>
+      </div>
+      <div class="address">
+        <label for="address"> 地址 </label>
+        <input type="text" id="address" name="formAddress">
+        <span class="message formAddress"></span>
+      </div>
+      <div class="line_02"></div>
+      <div class="payment">
+        <label for=""> 付款方式 </label>
+        <select name="payment" id="payment">
+          <option value="信用卡"> 信用卡 </option>
+          <option value="銀行轉帳"> 銀行轉帳 </option>
+          <option value="貨到付款"> 貨到付款 </option>
+          <option value="媽咪幫我付款"> 媽咪幫我付款 </option>
+        </select>
+      </div>
+    </div>
+    <div class="booking_btn">
+      <button type="submit" id="bookingBTN"> 送出訂單 </button>
+    </form>
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js' integrity='sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==' crossorigin='anonymous'></script>
+  <script src="https://validatejs.org/validate.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="JS/booking.js"></script>
+</body>
+</html>

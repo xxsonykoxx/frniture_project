@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>產品列表</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/minireset.css/0.0.2/minireset.css' integrity='sha512-oCMe0gk4MRWD41q3DdT0Aa5r7a7XyKd8bqbpzaVPsuR+cXzwG/mexuuMdTfQPLLw0vLdYN6umSRYokROXCfZPA==' crossorigin='anonymous'/>
+  <link rel="stylesheet" href="dist/css/all.min.css">
+</head>
+<body>
+  <div class="product_container">
+    <header>
+      <ul class="header_pages">
+        <li><a href="#"> 產品頁面 </a></li>
+        <li><a href="back-end.html"> 後台管理 </a></li>
+      </ul>
+    </header>
+    <div class="product_content">
+      <h3> products </h3>
+      <ul class="products_list" id="renderProduct">
+        <!-- <li class="product_group">
+          <div class="product_image">
+            <img src="https://item-shopping.c.yimg.jp/i/n/shugale1_0668766" >
+          </div>
+          <div class="product_text">
+            <h3> title </h3>
+            <p class="product_details">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis tenetur, nostrum voluptatem dignissimos at exercitationem iste culpa nesciunt impedit quo?
+            </p>
+            <h3 class="product_price"> $ <span>10000</span></h3>
+          </div>
+          <div class="addcart-btn">
+            <input type="button" value="加入購物車">
+          </div>
+        </li> -->
+      </ul>
+      <div class="center">
+        <div class="line"></div>
+      </div>
+      <h3> cart </h3>
+      <table class="cart_table">
+        <thead>
+          <tr>
+            <th>品項</th>
+            <th>單價</th>
+            <th>數量</th>
+            <th>金額</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="frontEndTable"
+        class="cart_table cart_detail"
+        >
+        </tbody>
+      </table>
+    </div>
+    <div class="checkout_btn">
+      <a href="#" id="checkoutBTN"> 前往結帳 </a>
+    </div>
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js' integrity='sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==' crossorigin='anonymous'></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="JS/products.js"></script>
+</body>
+</html>
