@@ -194,6 +194,55 @@
   color: #f49f9f;
 }
 
+.product-filters {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 5px;
+  margin-top: 20px;
+}
+
+.product-filters li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 50px;
+}
+
+.product-filters li p {
+  font-size: 12px;
+  font-weight: 300;
+  color: #ebd6b6;
+  margin-right: 9px;
+}
+
+.product-filters li select, .product-filters li input {
+  letter-spacing: 2px;
+  border: 1px solid #ebd6b6;
+  height: 30px;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 5px;
+  color: #ebd6b6;
+}
+
+.searchBTN {
+  margin-left: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.searchBTN:hover {
+  background-color: #ebd6b6;
+  color: #fff;
+}
+
 .booking_conrainer h2 {
   color: #e2c496;
 }

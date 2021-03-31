@@ -155,3 +155,38 @@ $E: #b7e28f;
   font-weight: 300;
   color: #f49f9f;
 }
+.product-filters {
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+  margin-top: 20px;
+  li {
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+    p {
+      font-size: 12px;
+      font-weight: 300;
+      color: $D;
+      margin-right: 9px;
+    }
+    select,input {
+    letter-spacing: 2px;
+    border: 1px solid $D;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 5px;
+    color: $D;
+    }
+  }
+}
+.searchBTN {
+  margin-left: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  &:hover {
+    background-color: $D;
+    color: #fff;
+  }
+}

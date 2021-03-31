@@ -3,15 +3,27 @@ const url = 'https://hexschoollivejs.herokuapp.com/api/livejs/v1/customer/sonyko
 let productList = [];
 let cartList = [];
 
-/* 產品渲染 (´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)*/
+/* get 資料 (´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)*/
 function getProducts(){
   axios.get(`${url}products`)
   .then(res => {
     productList = res.data.products;
-    productRender(productList)
+  })
+}
+
+/* 資料初始化 (´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)
+p.s. 這邊不知道怎麼跟上面的  get 資料結合 OAQ 
+*/
+function init() {
+  axios.get(`${url}products`)
+  .then(res => {
+    productList = res.data.products;
+    productRender(productList);
     console.log(productList)
   })
 }
+
+/* 渲染 (´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)*/
 const renderList = document.getElementById('renderProduct')
 function productRender(data) {
   let str = '';
@@ -40,7 +52,44 @@ function productRender(data) {
   });
   renderList.innerHTML = str;
 }
-getProducts();
+init()
+
+/* change 篩選 (´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)*/
+const categoryFilter = document.getElementById('categoryFilter');
+categoryFilter.addEventListener('change',productFilter)
+function productFilter(e) {
+  getProducts();
+  let newList = productList.filter(i => i.category == e.target.value);
+  productRender(newList)
+  if (e.target.value=='all'){
+    init();
+  }
+}
+
+/* click 篩選 (´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)*/
+const searchBTN = document.querySelector('.searchBTN');
+const keywordInput = document.querySelector('.keyword');
+searchBTN.addEventListener('click', keywordFilter);
+function keywordFilter(e){
+  getProducts();
+  let keyword = keywordInput.value;
+  let newFilter = productList.filter(i => i.category.includes(keyword)||i.title.includes(keyword)|| i.description.includes(keyword));
+  if(newFilter == ''){
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: '查無資料 (´・ω・`)',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    keywordInput.value = ''
+  }else {
+    productRender(newFilter)
+    keywordInput.value = ''
+  }
+  
+}
+
 /* 加入購物車 (´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)*/
 renderList.addEventListener('click',addCart)
 function addCart(e){

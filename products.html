@@ -18,6 +18,22 @@
     </header>
     <div class="product_content">
       <h3> products </h3>
+      <ul class="product-filters">
+        <li>
+          <p>category</p>
+          <select name="" id="categoryFilter">
+            <option value="all" >全部類別</option>
+            <option value="窗簾" >窗簾</option>
+            <option value="收納" >收納</option>
+            <option value="床架" >床架</option>
+          </select>
+        </li>
+        <li>
+          <p>search</p>
+          <input type="text" class="keyword">
+          <input type="button" class="searchBTN" value="搜尋">
+        </li>
+      </ul>
       <ul class="products_list" id="renderProduct">
         <!-- <li class="product_group">
           <div class="product_image">
