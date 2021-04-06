@@ -5,9 +5,10 @@ $D: #ebd6b6;
 $E: #b7e28f;
 
 .swal2-styled:focus {
-  box-shadow:none !important;
+  box-shadow: none !important;
 }
-.product_container,.booking_conrainer {
+.product_container,
+.booking_conrainer {
   max-width: 850px;
   margin: 0 auto;
   padding: 10px;
@@ -31,7 +32,7 @@ $E: #b7e28f;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid lighten($A,6%);
+  border: 1px solid lighten($A, 6%);
   width: 250px;
   border-radius: 5px;
   margin-bottom: 30px;
@@ -61,26 +62,27 @@ $E: #b7e28f;
 .product_details {
   color: $A;
 }
-.product_price,.addcart-btn {
+.product_price,
+.addcart-btn {
   display: flex;
   justify-content: flex-end;
 }
 .addcart-btn {
- margin: 8px;
- border-radius: 5px;
- input {
-  padding-top: 5px;
-  padding-bottom: 5px;
-   background-color: $B;
-   color: #FFF;
-   letter-spacing: 1.8px;
-   border: none;
-   border-radius: 4px;
-   cursor: pointer;
-   &:hover {
-     background-color: $D;
-   }
- }
+  margin: 8px;
+  border-radius: 5px;
+  input {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: $B;
+    color: #fff;
+    letter-spacing: 1.8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+      background-color: $D;
+    }
+  }
 }
 .cart_table {
   margin-left: 10px;
@@ -124,6 +126,7 @@ $E: #b7e28f;
   height: 1px;
   width: 90%;
   background-color: lighten($D, 3%);
+  margin-top: 30px;
 }
 .center {
   display: flex;
@@ -133,7 +136,7 @@ $E: #b7e28f;
 
 .checkout_btn {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-top: 30px;
   margin-right: 10px;
   a {
@@ -170,14 +173,15 @@ $E: #b7e28f;
       color: $D;
       margin-right: 9px;
     }
-    select,input {
-    letter-spacing: 2px;
-    border: 1px solid $D;
-    height: 30px;
-    border-radius: 5px;
-    font-size: 12px;
-    padding: 5px;
-    color: $D;
+    select,
+    input {
+      letter-spacing: 2px;
+      border: 1px solid $D;
+      height: 30px;
+      border-radius: 5px;
+      font-size: 12px;
+      padding: 5px;
+      color: $D;
     }
   }
 }
@@ -189,4 +193,27 @@ $E: #b7e28f;
     background-color: $D;
     color: #fff;
   }
+}
+.cart-header {
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: space-between;
+  .clearall-btn {
+    color: #fff;
+    font-size: 11px;
+    padding: 0;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: $D;
+    border: 1px solid $D;
+    cursor: pointer;
+    margin-right: 10px;
+    &:hover {
+      color: $D;
+      background-color: transparent;
+    }
+  }
+}
+.cart-total {
+  color: darken($D, 10%);
 }

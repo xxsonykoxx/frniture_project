@@ -5,7 +5,7 @@
   padding: 24px;
   border-radius: 10px;
   background-color: #fff;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   margin-top: 20px;
   padding-bottom: 20px;
@@ -70,4 +70,13 @@
     border: 1px solid $B;
     color: $B;
   }
+}
+.c3-legend-item, .c3-chart-arcs-title, .c3-chart-arc,.c3-focused {
+  fill: darken($D, 20%);
+  font-weight: 300;
+  font-size: 14px;
+}
+.c3_content {
+  display: flex;
+  margin-bottom: 50px;
 }

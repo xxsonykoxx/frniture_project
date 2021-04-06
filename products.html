@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="IE=edge"
+  >
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
   <title>產品列表</title>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/minireset.css/0.0.2/minireset.css' integrity='sha512-oCMe0gk4MRWD41q3DdT0Aa5r7a7XyKd8bqbpzaVPsuR+cXzwG/mexuuMdTfQPLLw0vLdYN6umSRYokROXCfZPA==' crossorigin='anonymous'/>
-  <link rel="stylesheet" href="dist/css/all.min.css">
+  <link
+    rel='stylesheet'
+    href='https://cdnjs.cloudflare.com/ajax/libs/minireset.css/0.0.2/minireset.css'
+    integrity='sha512-oCMe0gk4MRWD41q3DdT0Aa5r7a7XyKd8bqbpzaVPsuR+cXzwG/mexuuMdTfQPLLw0vLdYN6umSRYokROXCfZPA=='
+    crossorigin='anonymous'
+  />
+  <link
+    rel="stylesheet"
+    href="dist/css/all.min.css"
+  >
 </head>
+
 <body>
   <div class="product_container">
     <header>
@@ -21,20 +37,33 @@
       <ul class="product-filters">
         <li>
           <p>category</p>
-          <select name="" id="categoryFilter">
-            <option value="all" >全部類別</option>
-            <option value="窗簾" >窗簾</option>
-            <option value="收納" >收納</option>
-            <option value="床架" >床架</option>
+          <select
+            name=""
+            id="categoryFilter"
+          >
+            <option value="all">全部類別</option>
+            <option value="窗簾">窗簾</option>
+            <option value="收納">收納</option>
+            <option value="床架">床架</option>
           </select>
         </li>
         <li>
           <p>search</p>
-          <input type="text" class="keyword">
-          <input type="button" class="searchBTN" value="搜尋">
+          <input
+            type="text"
+            class="keyword"
+          >
+          <input
+            type="button"
+            class="searchBTN"
+            value="搜尋"
+          >
         </li>
       </ul>
-      <ul class="products_list" id="renderProduct">
+      <ul
+        class="products_list"
+        id="renderProduct"
+      >
         <!-- <li class="product_group">
           <div class="product_image">
             <img src="https://item-shopping.c.yimg.jp/i/n/shugale1_0668766" >
@@ -54,7 +83,12 @@
       <div class="center">
         <div class="line"></div>
       </div>
-      <h3> cart </h3>
+      <div class="cart-header">
+        <h3> cart </h3>
+        <h3 class="clearall-btn"
+        id="clearAllCartBtn"
+        > clear cart </h3>
+      </div>
       <table class="cart_table">
         <thead>
           <tr>
@@ -65,18 +99,31 @@
             <th></th>
           </tr>
         </thead>
-        <tbody id="frontEndTable"
-        class="cart_table cart_detail"
+        <tbody
+          id="frontEndTable"
+          class="cart_table cart_detail"
         >
         </tbody>
       </table>
+      
     </div>
     <div class="checkout_btn">
-      <a href="#" id="checkoutBTN"> 前往結帳 </a>
+      <h4 class="cart-total">total　$<span id="cartTotalPrice"> 0 </span></h4>
+      <div>
+        <a
+          href="#"
+          id="checkoutBTN"
+        > 前往結帳 </a>
+      </div>
     </div>
   </div>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js' integrity='sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==' crossorigin='anonymous'></script>
+  <script
+    src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js'
+    integrity='sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=='
+    crossorigin='anonymous'
+  ></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="JS/products.js"></script>
 </body>
+
 </html>

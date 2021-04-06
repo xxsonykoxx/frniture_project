@@ -4,7 +4,8 @@
           box-shadow: none !important;
 }
 
-.product_container, .booking_conrainer {
+.product_container,
+.booking_conrainer {
   max-width: 850px;
   margin: 0 auto;
   padding: 10px;
@@ -77,7 +78,8 @@
   color: #a4ceee;
 }
 
-.product_price, .addcart-btn {
+.product_price,
+.addcart-btn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -95,7 +97,7 @@
   padding-top: 5px;
   padding-bottom: 5px;
   background-color: #dfbff0;
-  color: #FFF;
+  color: #fff;
   letter-spacing: 1.8px;
   border: none;
   border-radius: 4px;
@@ -150,6 +152,7 @@
   height: 1px;
   width: 90%;
   background-color: #eeddc2;
+  margin-top: 30px;
 }
 
 .center {
@@ -166,9 +169,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-top: 30px;
   margin-right: 10px;
 }
@@ -222,7 +225,8 @@
   margin-right: 9px;
 }
 
-.product-filters li select, .product-filters li input {
+.product-filters li select,
+.product-filters li input {
   letter-spacing: 2px;
   border: 1px solid #ebd6b6;
   height: 30px;
@@ -241,6 +245,37 @@
 .searchBTN:hover {
   background-color: #ebd6b6;
   color: #fff;
+}
+
+.cart-header {
+  margin-bottom: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.cart-header .clearall-btn {
+  color: #fff;
+  font-size: 11px;
+  padding: 0;
+  padding: 8px;
+  border-radius: 5px;
+  background-color: #ebd6b6;
+  border: 1px solid #ebd6b6;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.cart-header .clearall-btn:hover {
+  color: #ebd6b6;
+  background-color: transparent;
+}
+
+.cart-total {
+  color: #e0c08e;
 }
 
 .booking_conrainer h2 {
@@ -337,7 +372,7 @@
   padding: 24px;
   border-radius: 10px;
   background-color: #fff;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   margin-top: 20px;
   padding-bottom: 20px;
@@ -411,6 +446,19 @@
 .del-all-button:hover {
   border: 1px solid #dfbff0;
   color: #dfbff0;
+}
+
+.c3-legend-item, .c3-chart-arcs-title, .c3-chart-arc, .c3-focused {
+  fill: #d5a966;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.c3_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 50px;
 }
 
 input:focus, button:focus, select:focus {
