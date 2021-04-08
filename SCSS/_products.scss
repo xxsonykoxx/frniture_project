@@ -217,3 +217,25 @@ $E: #b7e28f;
 .cart-total {
   color: darken($D, 10%);
 }
+.not-found{
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 300px;
+  display: none;
+}
+.display {
+  display: block;
+}
+.fa-minus,.fa-plus {
+  font-size: 10px;
+  padding: 5px;
+  cursor: pointer;
+  &:hover {
+    color: darken($D, 30%);
+  }
+}
+
+
+/*
+成功的動作的也可以加上彈跳視窗提醒
+*/

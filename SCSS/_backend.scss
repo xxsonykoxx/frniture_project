@@ -31,7 +31,7 @@
     font-weight: 300;
     color: $B;
     text-align: center;
-    padding-bottom: 8px;
+    padding-bottom: 20px;
   }
 }
 .order-name, .order-email , .order-date {
@@ -71,12 +71,24 @@
     color: $B;
   }
 }
-.c3-legend-item, .c3-chart-arcs-title, .c3-chart-arc,.c3-focused {
+.c3-legend-item, .c3-focused {
   fill: darken($D, 20%);
   font-weight: 300;
-  font-size: 14px;
+  font-size: 12px;
+}
+.c3-chart-arcs-title, .c3-chart-arc {
+  fill: #FFF;
+  font-weight: 300;
+  font-size: 12px;
 }
 .c3_content {
   display: flex;
   margin-bottom: 50px;
+}
+.patch {
+  cursor: pointer;
+}
+
+.done {
+  color: #63dd96;
 }

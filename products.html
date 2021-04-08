@@ -18,6 +18,7 @@
     integrity='sha512-oCMe0gk4MRWD41q3DdT0Aa5r7a7XyKd8bqbpzaVPsuR+cXzwG/mexuuMdTfQPLLw0vLdYN6umSRYokROXCfZPA=='
     crossorigin='anonymous'
   />
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css' integrity='sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==' crossorigin='anonymous'/>
   <link
     rel="stylesheet"
     href="dist/css/all.min.css"
@@ -41,7 +42,7 @@
             name=""
             id="categoryFilter"
           >
-            <option value="all">全部類別</option>
+            <option value="">全部類別</option>
             <option value="窗簾">窗簾</option>
             <option value="收納">收納</option>
             <option value="床架">床架</option>
@@ -60,10 +61,14 @@
           >
         </li>
       </ul>
+      <div class="not-found" id="notFound">
+        <img src="001.png" alt="">
+      </div>
       <ul
         class="products_list"
         id="renderProduct"
       >
+     
         <!-- <li class="product_group">
           <div class="product_image">
             <img src="https://item-shopping.c.yimg.jp/i/n/shugale1_0668766" >

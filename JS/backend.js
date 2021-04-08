@@ -20,15 +20,14 @@ getOrders();
 /* 渲染訂單 (´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)*/
 function ordersRender(data) {
   let html = '';
-  let status;
   let date;
+  let productDetail = '';
   let formatDate;
+  
   data.forEach((i) => {
-    if (i.paid == 'true') {
-      status = '已付款';
-    } else {
-      status = '未付款';
-    }
+    i.products.forEach( item => {
+      productDetail += `${item.title} x ${item.quantity} </br>`
+    });
     date = new Date(i.createdAt);
     formatDate = timeformat(date);
     html += `
@@ -37,11 +36,13 @@ function ordersRender(data) {
       <td class="order-name">${i.user.name}</td>
       <td>${i.user.address}</td>
       <td class="order-email">${i.user.email}</td>
-      <td>${i.products[0].title}</td>
-      <td  class="order-date">${formatDate}</td>
-      <td>${status}</td>
+      <td>${productDetail}</td>
+      <td class="order-date">${formatDate}</td>
+      <td class="paid"
+      id="patchBTN">
+      <span
+      >${i.paid?`<span class="done patch" data-set="${i.id}" data-paid="${i.paid}"><i class="fas fa-check"></i>已處理</span>`:`<span class="undisposed patch" data-set="${i.id}" data-paid="${i.paid}"><i class="fas fa-times"></i>未處理</span>`}</span></td>
       <td>
-        <button class="del-order" id="patchBTN" data-set="${i.id}" data-paid="${i.paid}"> 修改狀態 </button>
         <button class="del-order" id="deleteOneBTN" data-set="${i.id}"> 移除 </button>  
       </td>
     </tr>
@@ -57,10 +58,10 @@ function timeformat(date) {
   return `${year}/${month}/${day}`;
 }
 
-/* 刪除訂單 (´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)*/
-backendTable.addEventListener('click', delAndPatchOrder);
-function delAndPatchOrder(e) {
-  let id = e.target.dataset.set.set;
+/* 修改訂單 (´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)*/
+backendTable.addEventListener('click', delOrder);
+function delOrder(e) {
+  let id = e.target.dataset.set;
   if( e.target.id == 'deleteOneBTN' ){
     Swal.fire({
       title: '確定要刪除訂單嗎？',
@@ -88,23 +89,27 @@ function delAndPatchOrder(e) {
       }
     });
   } 
-  else {
-    let paid = e.target.dataset.paid ;
-    let putObj ={
+}
+backendTable.addEventListener('click', putOrder);
+function putOrder(e) {
+  if(e.target.classList[1] === 'patch') {
+    let id = e.target.dataset.set ;
+    let paid = e.target.dataset.paid; 
+    if( paid =='false'){
+      paid = true;
+    } else if (paid =='true') {
+      paid = false;
+    }
+    const obj = {
       data : {
         id : id,
-        paid : !paid,
+        paid : paid
       }
     }
-    const config = {
-      method: 'put',
-      url: url,
-      token,
-      data :putObj
-    }
-    axios(config)
-    .then( res => {
+    axios.put(url,obj,token)
+    .then(res => {
       console.log(res)
+      getOrders();
     })
   }
 }
@@ -144,12 +149,14 @@ function delAllOrder() {
 
 function chartFilter(data) {
 	let editData = {};
-	data.forEach(item => {
-		if (editData[item.products[0].title] == undefined) {
-			editData[item.products[0].title] = 1;
-		} else {
-			editData[item.products[0].title] += 1;
-		}
+	data.forEach(product => {
+    product.products.forEach(item => {
+      if (editData[item.title] == undefined) {
+        editData[item.title] = 1;
+      } else {
+        editData[item.title] += 1;
+      }
+    })	
 	});
 	let columns = [];
 	let product = Object.keys(editData);
@@ -165,17 +172,10 @@ function c3Chart(columns) {
 		bindto: "#chart",
 		data: {
 			columns: columns,
-			type: "donut",
+			type: "pie",
 		},
     color: {
-      pattern: ['#a4ceee', '#dfbff0', '#a3e4be', '#ebd6b6', '#b7e28f', '#98df8a']
+      pattern: ['#6aacd8', '#84bbe0', '#a9cee8', '#c4deef', '#b7e28f', '#98df8a']
     },
-		donut: {
-			title: "銷售狀況 ( ^ω^ )",
-      width: 20,
-      label: {
-        show: false
-      }
-		}
 	});
 }

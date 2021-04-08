@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400&family=Noto+Sans+TC:wght@100;300;400&display=swap");
 .swal2-styled:focus {
   -webkit-box-shadow: none !important;
@@ -278,6 +279,30 @@
   color: #e0c08e;
 }
 
+.not-found {
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 300px;
+  display: none;
+}
+
+.display {
+  display: block;
+}
+
+.fa-minus, .fa-plus {
+  font-size: 10px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.fa-minus:hover, .fa-plus:hover {
+  color: #ca933e;
+}
+
+/*
+成功的動作的也可以加上彈跳視窗提醒
+*/
 .booking_conrainer h2 {
   color: #e2c496;
 }
@@ -398,7 +423,7 @@
   font-weight: 300;
   color: #dfbff0;
   text-align: center;
-  padding-bottom: 8px;
+  padding-bottom: 20px;
 }
 
 .order-name, .order-email, .order-date {
@@ -448,10 +473,16 @@
   color: #dfbff0;
 }
 
-.c3-legend-item, .c3-chart-arcs-title, .c3-chart-arc, .c3-focused {
+.c3-legend-item, .c3-focused {
   fill: #d5a966;
   font-weight: 300;
-  font-size: 14px;
+  font-size: 12px;
+}
+
+.c3-chart-arcs-title, .c3-chart-arc {
+  fill: #FFF;
+  font-weight: 300;
+  font-size: 12px;
 }
 
 .c3_content {
@@ -459,6 +490,14 @@
   display: -ms-flexbox;
   display: flex;
   margin-bottom: 50px;
+}
+
+.patch {
+  cursor: pointer;
+}
+
+.done {
+  color: #63dd96;
 }
 
 input:focus, button:focus, select:focus {

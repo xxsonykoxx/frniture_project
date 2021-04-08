@@ -3,17 +3,19 @@ const url =
 let productList = [];
 let cartList = [];
 
-/* get 資料 (´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)*/
+/* get 資料 ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ*/
 function getProducts() {
-  axios.get(`${url}products`).then((res) => {
-    productList = res.data.products;
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+  axios
+    .get(`${url}products`)
+    .then((res) => {
+      productList = res.data.products;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
-/* 資料初始化 (´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)
+/* 資料初始化 ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ
 p.s. 這邊不知道怎麼跟上面的  get 資料結合 OAQ 
 */
 function init() {
@@ -24,7 +26,7 @@ function init() {
   });
 }
 
-/* 渲染 (´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)*/
+/* 渲染 ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ*/
 const renderList = document.getElementById('renderProduct');
 function productRender(data) {
   let str = '';
@@ -55,46 +57,60 @@ function productRender(data) {
 }
 init();
 
-/* change 篩選 (´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)*/
-const categoryFilter = document.getElementById('categoryFilter');
+/* select 篩選 ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ*/
+const notFound = document.querySelector('#notFound');
 categoryFilter.addEventListener('change', productFilter);
-function productFilter(e) {
-  let newList = productList.filter((i) => i.category == e.target.value);
-  productRender(newList);
-  if (e.target.value == 'all') {
-    init();
+function productFilter() {
+  let filterArray = [];
+  filterArray = productList.filter((item) => {
+    if (categoryFilter.value) {
+      notFound.classList.remove("display")
+      console.log(categoryFilter.value);
+      return (
+        item.category === categoryFilter.value &&
+        item.title.indexOf(keywordInput.value) !== -1
+      );
+    }
+    return item.title.indexOf(keywordInput.value) !== -1;
+  });
+  if (filterArray == '') {
+    notFound.classList.add("display")
   }
+  productRender(filterArray);
 }
 
-/* click 篩選 (´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)*/
+/* keyword 篩選 ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ*/
 const searchBTN = document.querySelector('.searchBTN');
 const keywordInput = document.querySelector('.keyword');
-searchBTN.addEventListener('click', keywordFilter);
-function keywordFilter(e) {
-  getProducts();
-  let keyword = keywordInput.value;
-  let newFilter = productList.filter(
-    (i) =>
-      i.category.includes(keyword) ||
-      i.title.includes(keyword) ||
-      i.description.includes(keyword),
-  );
-  if (newFilter == '') {
-    Swal.fire({
-      position: 'center',
-      icon: 'error',
-      title: '查無資料 (´・ω・`)',
-      showConfirmButton: false,
-      timer: 1500,
-    });
-    keywordInput.value = '';
-  } else {
-    productRender(newFilter);
-    keywordInput.value = '';
+keywordInput.addEventListener("keypress", function(event) {
+  if(event.key === 'Enter'){
+    searchProduct()
+  }
+});
+searchBTN.addEventListener('click', searchProduct);
+function searchProduct() {
+  let filterArray = [];
+  filterArray = productList.filter((item) => {
+    if (categoryFilter.value) {
+      notFound.classList.remove("display");
+      console.log(categoryFilter.value)
+      return (
+        item.category === categoryFilter.value &&
+        item.title.indexOf(keywordInput.value) !== -1
+      );
+    } else {
+      notFound.classList.remove("display");
+    }
+    return item.title.indexOf(keywordInput.value) !== -1;
+  });
+  productRender(filterArray);
+  if (filterArray == '') {
+    notFound.classList.add("display")
   }
 }
 
-/* 加入購物車 (´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)*/
+
+/* 加入購物車 ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ*/
 renderList.addEventListener('click', addCart);
 function addCart(e) {
   if (e.target.nodeName === 'INPUT') {
@@ -109,6 +125,13 @@ function addCart(e) {
       .post(`${url}carts`, obj)
       .then((res) => {
         console.log(res);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: '成功加入購物車',
+          showConfirmButton: false,
+          timer: 1200,
+        });
         getCart();
       })
       .catch((err) => {
@@ -117,31 +140,37 @@ function addCart(e) {
   }
 }
 
-/* 取得購物車 (´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)*/
+/* 取得購物車 ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ*/
 function getCart() {
-  axios.get(`${url}carts`).then((res) => {
-    cartList = res.data.carts;
-    cartRender(cartList);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+  axios
+    .get(`${url}carts`)
+    .then((res) => {
+      cartList = res.data.carts;
+      cartRender(cartList);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 getCart();
 const frontEndTable = document.getElementById('frontEndTable');
 const cartTotalPrice = document.getElementById('cartTotalPrice');
-/* 渲染購物車 (´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)*/
+/* 渲染購物車 ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ*/
 function cartRender(data) {
   let html = '';
   let total = 0;
   data.forEach((i) => {
-    total += i.product.price;
+    total += i.product.price*i.quantity;
     html += `
     <tr>
     <td>${i.product.title}</td>
     <td>$ ${i.product.price}</td>
-    <td>${i.quantity}</td>
-    <td>$ ${i.product.price}</td>
+    <td>
+    <i class="fas fa-minus" id="removeItemBTN" data-set="${i.id}"></i>
+    ${i.quantity}
+    <i class="fas fa-plus" id="addItemBTN" data-set="${i.id}"></i>
+    </td>
+    <td>$ ${i.product.price*i.quantity}</td>
     <td>
       <button data-set="${i.id}"> 刪除 </button>
     </td>
@@ -152,22 +181,22 @@ function cartRender(data) {
   cartTotalPrice.innerHTML = total;
 }
 
-/* 刪除單一 (´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)*/
+/* 刪除單一 ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ*/
 frontEndTable.addEventListener('click', delCart);
 function delCart(e) {
   if (e.target.nodeName === 'BUTTON') {
     axios
-    .delete(`${url}carts/${e.target.dataset.set}`)
-    .then((res) => {
-      console.log(res);
-      getCart();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+      .delete(`${url}carts/${e.target.dataset.set}`)
+      .then((res) => {
+        console.log(res);
+        getCart();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }
-/* 清空購物車 (´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)人(´・ω・`)*/
+/* 清空購物車 ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ*/
 const clearAllCartBtn = document.getElementById('clearAllCartBtn');
 clearAllCartBtn.addEventListener('click', clearAllProducts);
 function clearAllProducts() {
@@ -202,19 +231,81 @@ function checkout() {
   }
 }
 
-// 參考
-// productList.addEventListener('click',function(e){
-//   e.preventDefault();
-//   let target = e.target;
-//   if (target.matches('.merchandise__item .add-button')){
-//       let productId = target.closest('.merchandise__item').dataset.id;
-//       let productNum = 0;
-      
-//       data.cartList.carts.forEach(item=>{
-//           if (item.product.id === productId ){
-//               productNum = item.quantity;
-//           }
-//       })
-//       addCartItem(productId, productNum);
-//   }
-// })
+/* 数変え ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ*/
+frontEndTable.addEventListener('click', changeItemNum);
+function changeItemNum(e) {
+  if(e.target.id === 'addItemBTN') {
+    addItemNum(e)
+  }
+  if(e.target.id === 'removeItemBTN') {
+    removeItemNum(e)
+  }
+}
+
+/* 数を増やす ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ*/
+function addItemNum(e) {
+  console.log(cartList, e.target.dataset.set);
+  cartList.forEach(i => {
+    if(i.id === e.target.dataset.set) {
+      let obj = {
+        data : {
+          id : i.id ,
+          quantity: i.quantity+1,
+        }
+      }
+      axios.patch(`${url}carts`, obj)
+      .then (res => {
+        console.log(res);
+        getCart()
+      });
+    }
+  })
+}
+
+/* 削除 ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ ☆.｡.:*・ﾟ*/
+function removeItemNum(e) {
+  console.log(cartList, e.target.dataset.set);
+  cartList.forEach(i => {
+    console.log(i.quantity)
+    if(i.id === e.target.dataset.set) {
+      if (i.quantity === 1) {
+        Swal.fire({
+          title: '確定要移除商品嗎？',
+          text: '刪囉 ？ (´・ω・｀)',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#a3cfee',
+          cancelButtonColor: '#f49f9f',
+          confirmButtonText: '刪',
+          cancelButtonText: '不要好了',
+        })
+        .then(result => {
+          if (result.isConfirmed) {
+            axios
+            .delete(`${url}carts/${e.target.dataset.set}`)
+            .then((res) => {
+              console.log(res);
+              getCart();
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+          }
+        })
+      } else {
+        let obj = {
+          data : {
+            id : i.id ,
+            quantity: i.quantity-1,
+          }
+        }
+        axios.patch(`${url}carts`, obj)
+        .then (res => {
+          console.log(res);
+          getCart()
+        });
+      }
+    }
+  })
+}
+
