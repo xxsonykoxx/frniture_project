@@ -29,7 +29,7 @@ function order() {
       showConfirmButton: false,
       timer: 1500,
     }).then(() => {
-      window.location = 'products.html';
+      window.location = 'index.html';
     });
   });
 }
