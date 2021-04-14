@@ -28,7 +28,7 @@ function ordersRender(data) {
     i.products.forEach( item => {
       productDetail += `${item.title} x ${item.quantity} </br>`
     });
-    date = new Date(i.createdAt);
+    date = new Date(i.createdAt*1000);
     formatDate = timeformat(date);
     html += `
     <tr>
@@ -161,6 +161,7 @@ function chartFilter(data) {
 	let columns = [];
 	let product = Object.keys(editData);
 	product.forEach(item => {
+    console.log(item)
 		columns.push([item, editData[item]]);
 	});
 	c3Chart(columns);
