@@ -161,7 +161,6 @@ function chartFilter(data) {
 	let columns = [];
 	let product = Object.keys(editData);
 	product.forEach(item => {
-    console.log(item)
 		columns.push([item, editData[item]]);
 	});
 	c3Chart(columns);

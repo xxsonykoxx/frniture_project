@@ -69,10 +69,10 @@ function productFilter() {
       console.log(categoryFilter.value);
       return (
         item.category === categoryFilter.value &&
-        item.title.indexOf(keywordInput.value) !== -1
+        item.title.toUpperCase().indexOf(keywordInput.value.toUpperCase()) !== -1
       );
     }
-    return item.title.indexOf(keywordInput.value) !== -1;
+    return item.title.toUpperCase().indexOf(keywordInput.value.toUpperCase()) !== -1;
   });
   if (filterArray == '') {
     notFound.classList.add('display');
@@ -96,7 +96,7 @@ function searchProduct() {
       notFound.classList.remove('display');
       console.log(categoryFilter.value);
       return (
-        item.category === categoryFilter.value &&
+        item.category === categoryFilter.value.toUpperCase() &&
         item.title.toUpperCase().indexOf(keywordInput.value.toUpperCase()) !==
           -1
       );
